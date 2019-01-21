@@ -5,21 +5,9 @@ console.log('Visible is running!');
 var isClicked = false;
 
 var showDetails = function showDetails() {
-  //console.log('test');
-  if (isClicked === false) {
-    isClicked = true;
-    //textButton = 'Hide Details';
-    //console.log('was false', isClicked);
-    renderVisibleApp();
-  } else {
-    isClicked = false;
-    //textButton = 'Show Details';
-    //console.log('was true', isClicked);
-    renderVisibleApp();
-  }
+  isClicked = !isClicked;
+  renderVisibleApp();
 };
-
-var textButton = 'Show details';
 
 var appRoot = document.getElementById('app');
 
@@ -35,13 +23,13 @@ var renderVisibleApp = function renderVisibleApp() {
     React.createElement(
       'button',
       { onClick: showDetails },
-      isClicked === false ? textButton = 'Show Details' : textButton = 'Hide Details'
+      !isClicked ? 'Show Details' : 'Hide Details'
     ),
-    isClicked === true ? React.createElement(
+    isClicked && React.createElement(
       'p',
       null,
       'Some details'
-    ) : undefined
+    )
   );
 
   ReactDOM.render(visible, appRoot);

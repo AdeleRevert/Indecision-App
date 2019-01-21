@@ -3,21 +3,9 @@ console.log('Visible is running!');
 let isClicked = false;
 
 const showDetails = () => {
-  //console.log('test');
-  if (isClicked === false) {
-    isClicked = true;
-    //textButton = 'Hide Details';
-    //console.log('was false', isClicked);
-    renderVisibleApp();
-  } else {
-    isClicked = false;
-    //textButton = 'Show Details';
-    //console.log('was true', isClicked);
-    renderVisibleApp();
-  }
+  isClicked = !isClicked;
+  renderVisibleApp();
 }
-
-let textButton = 'Show details';    
 
 const appRoot = document.getElementById('app');
 
@@ -26,10 +14,10 @@ const renderVisibleApp = () => {
     <div>
       <h1>Visibility Toggle</h1>
       <button onClick={showDetails}>
-      {isClicked === false ? textButton = 'Show Details' : textButton ='Hide Details'}
+        {!isClicked ? 'Show Details' : 'Hide Details'}
       </button>
-      {isClicked === true ? <p>Some details</p> : undefined}
-      </div>
+      {isClicked && <p>Some details</p>}
+    </div>
   )
 
   ReactDOM.render(visible, appRoot);
